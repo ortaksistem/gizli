@@ -1,0 +1,157 @@
+﻿body {
+	background:url(../img/yeni-bg.jpg) #fff repeat-x;
+}
+
+.main {
+	width:810px;
+	height:771px;
+	background:url(../img/yeni-main-bg.png) no-repeat;
+	position:relative;
+	margin:0 auto;
+}
+.destek {
+	width:150px;
+	height:20px;
+	top:65px;
+	position:absolute;
+	right:1px;
+	text-align:right;
+}
+.destek a {
+	font-size:12px;
+	font-family:Verdana;
+	color:#767676;
+	text-decoration:none;
+	padding-right:5px;
+}
+.destek a:hover {
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+.uyeol1 {
+	width:161px;
+	height:41px;
+	top:103px;
+	position:absolute;
+	right:20px;
+	text-align:right;	
+}
+
+.kullanicigiris {
+	width:207px;
+	position:absolute;
+	left:28px;
+	top:179px;
+}
+.kullanicigiris .sifre {
+	padding:5px 0;
+}
+.kullanicigiris .buton {
+	padding:5px 0;
+	text-align:right;
+	vertical-align:middle;
+}
+.kullanicigiris .buton a {
+	font-size:11px;
+	font-weight:500;
+	color:#f88f9b;
+	font-family:Arial;
+	text-decoration:none;
+}
+.kullanicigiris .buton a:hover {
+	text-decoration:underline;
+}
+.kullanicigiris .buton ul {
+	width:207px;
+}
+.kullanicigiris .buton li {
+	float:right;
+}
+.kullanicigiris .buton .sifreiste {
+	width:120px;
+	padding:0px 0px 0px 0px;
+	text-align:left;
+}
+.kullanicigiris .buton .buttongiris2 {
+	width:86px;
+	text-align:left;
+}
+
+.inputkullanici {
+	width:207px;
+	height:37px;
+	background:url(../img/yeni-kullanici-bg.jpg) no-repeat;
+	padding:10px 0px 0px 44px;
+	font-size:12px;
+	color:#707070;
+	font-family:Arial;
+}
+.inputsifre {
+	width:207px;
+	height:37px;
+	background:url(../img/yeni-sifre-bg.jpg) no-repeat;
+	padding:10px 0px 0px 44px;
+	font-size:12px;
+	color:#707070;
+	font-family:Arial;
+
+}
+.buttongiris {
+	width:86px;
+	height:33px;
+	right:0px;
+}
+.yukleniyor {
+	width:207px;
+	display:none;
+	position:absolute;
+	top:154px;
+	left:28px;
+	text-align:right;
+	font-size:11px;
+	color:#fff;
+	font-weight:bold;
+}
+.istatistik {
+	width:207px;
+	height:152px;
+	background:url(../img/yeni-kayit-bg.jpg) no-repeat;
+	position:absolute;
+	text-align:left;
+	top:338px;
+	left:41px;
+	font-size:20px;
+	font-weight:700;
+	color:#fff;
+	font-family:"Trebuchet MS";
+}
+.istatistik ul {
+	padding:0px 0px 0px 120px;
+}
+.istatistik .onlinee2 {
+	padding:3px 0;
+}
+.istatistik .toplam {
+	padding:10px 0;
+}
+.istatistik .bugun {
+	padding:3px 0;
+}
+.istatistik .dun {
+	padding:12px 0;
+}
+.uyeol2 {
+	width:162px;
+	height:41px;
+	position:absolute;
+	top:533px;
+	left:64px;
+}
+.kizlar {
+	width:522px;
+	height:401px;
+	position:absolute;
+	top:162px;
+	right:15px;
+}

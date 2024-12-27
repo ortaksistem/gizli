@@ -1,0 +1,198 @@
+.paylas {
+    font-family: 'Verdana', sans-serif;
+    font-size: 12px;
+    width: 100%;
+    height: 80px;
+    border:1px solid #d5d5d5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-top:10px;
+    position: relative;
+    display: block;
+}
+.paylas .resim {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    top:0px;
+    left:0px;
+    border:1px solid #edecec;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.paylas .resim img {
+    width: 60px;
+    height: 60px;
+}
+
+.paylas textarea {
+    width: 80%;
+    height: 30px;
+    position: absolute;
+    left:70px;
+    top:20px;
+    font-size:14px;
+    font-weight: bold;
+    border:1px solid #ffffff;
+}
+.paylas .nedusunuyorsun {
+    height: 30px;
+    position: absolute;
+    left:70px;
+    top:20px;
+    font-size:14px;
+    font-weight: bold;
+}
+.nedusunuyorsun2 {
+    position: absolute;
+    left:70px;
+    top:20px;
+}
+.paylas .info {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size:10px;
+}
+.butonlar {
+    margin-top:10px;
+    display: block;
+}
+.butonlar button {
+    background: #dd2e2e;
+    width: 32%;
+    color:#ffffff;
+    font-weight: bold;
+    font-size: 12px;
+}
+.dahaeski {
+    background: #dd2e2e;
+    width: 100%;
+    color:#ffffff;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.cizgi2 {
+    width: 100%;
+    height: 1px;
+    background: #d6d6d6;
+    display: block;
+    margin:10px 0px 10px 0px;
+    clear: both;
+}
+.icerik {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+.resim {
+    width: 49px;
+    height: 52px;
+    overflow: hidden;
+    margin-top:10px;
+    margin-left:10px;
+    border:1px solid #edecec;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    float:left;
+}
+.kim {
+    margin-top:10px;
+    margin-left:10px;
+    font-size: 14px;
+    font-weight: bold;
+    float:left;
+    width: 80%;
+}
+.kim a {
+    color: #dd2e2e;
+}
+.baslik {
+    margin-top:0px;
+    margin-left:10px;
+    font-size: 12px;
+    font-weight: bold;
+    float:left;
+    width: 80%;
+}
+.nezaman {
+    margin-top:0px;
+    margin-left:10px;
+    float:left;
+    width: 80%;
+}
+.nezaman .boslukat {
+    margin-right: 10px;
+}
+.yazi {
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    text-align: justify;
+    font-family: Verdana, sans-serif;
+}
+.yazi img {
+    width: 98%;
+    margin:10px;
+}
+.yorumyap {
+    width: 100%;
+    height: 30px;
+    font-size:14px;
+    font-weight: bold;
+    border:1px solid #d0d0d0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+.yorumlar {
+    margin-top:5px;
+    font-weight: bold;
+    font-size:16px;
+}
+.yorum {
+    position: relative;
+    width: 100%;
+}
+.yorum .resim {
+    width: 70;
+    float:left;
+    border:none;
+}
+.yorum .resim img {
+    width: 60px;
+}
+.yorum p {
+    width: 98%;
+    float: right;
+    border:1px solid #d6d6d6;
+    padding: 5px;
+    margin-top:10px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+.yorum .kim {
+    width: 80%;
+    float:left;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #d6d6d6;
+}
+.yorum .kim span {
+    float: right;
+    color: #4e4d4d;
+    font-size: 12px;
+}
+.yorum .cizgi3 {
+    width: 80%;
+    height: 1px;
+    background: #d6d6d6;
+    display: block;
+    margin-top:10px;
+    clear: both;
+}

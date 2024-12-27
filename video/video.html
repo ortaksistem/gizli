@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>jqUploader demo</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="style.css"/>
+        <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+        <script type="text/javascript" src="jquery.flash.js"></script>
+        <script type="text/javascript" src="jquery.jqUploader.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#dosyali').jqUploader({
+                    debug:0
+                    ,background:'FFFFDF'
+                    ,barColor:'FFDD00'
+                    ,allowedExt:'*.avi; *.mp4; *.flv; *.mpg; *.mpeg; *.wmv; *.3gp'
+                    ,allowedExtDescr: 'ne istersin?'
+                    ,validFileMessage: 'Dosya secildi'
+                    ,endMessage: 'Dosya baþarýyla yüklendi.'
+                    ,hideSubmit: false
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="page">
+            <form enctype="multipart/form-data" action="flash_upload.php" method="POST" class="dosyaform">
+                <fieldset>
+                    <legend>Video Seçin</legend>
+                    <ol>
+                        <li id="dosyali">
+                            <label for="example1_field">Lütfen bir dosya seçiniz ( .mp4, .3gp, .flv, .mpg, .wmv, .avi): </label>
+                            <input name="MAX_FILE_SIZE" value="512000000" type="hidden" />
+                            <input name="Filedata" id="Filedata" type="file" />
+                        </li>
+                    </ol>
+                </fieldset>
+                <input type="submit" name="submit" value="Send" />
+            </form>
+        </div>
+    </body>
+</html>

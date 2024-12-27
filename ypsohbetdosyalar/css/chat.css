@@ -1,0 +1,165 @@
+.chatbox {
+	position: fixed;
+	position:expression("absolute");
+ top:expression(eval(document.compatMode &&
+document.compatMode=='CSS1Compat') ?
+documentElement.scrollTop
++(documentElement.clientHeight-this.clientHeight) 
+: document.body.scrollTop
++(document.body.clientHeight-this.clientHeight));	width: 225px;
+	display:none;
+}
+
+.chatboxhead {
+	background-color: #dd2e2e;
+	padding:7px;
+	color: #ffffff;
+	border-right:1px solid #7b7b7b;
+	border-left:1px solid #7b7b7b;
+	border-top:1px solid #7b7b7b;
+}
+
+.chatboxblink {
+	background-color: #6d84b4;
+	border-right:1px solid #176689;
+	border-left:1px solid #176689;
+}
+
+.chatboxcontent {
+	font-family: arial,sans-serif;
+	font-size: 13px;
+	color: #333333;
+	height:200px;
+	width:209px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	padding:7px;
+	border-left:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-bottom:1px solid #eeeeee;
+	background-color: #ffffff;
+	line-height: 1.3em;
+}
+
+.chatboxinput {
+	padding: 5px;
+	background-color: #ffffff;
+	border-left:1px solid #cccccc;
+	border-right:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+}
+
+.chatboxtextarea {
+	width: 206px;
+	height:44px;
+	padding:3px 0pt 3px 3px;
+	border: 1px solid #b8b8b8;
+	margin: 1px;
+	overflow:hidden;
+}
+
+.chatboxtextareaselected {
+	border: 2px solid #93a2c1;
+	margin:0;
+}
+
+.chatboxmessage {
+	margin-left:1em;
+}
+
+.chatboxinfo {
+	margin-left:-1em;
+	color:#666666;
+
+}
+
+.chatboxmessagefrom {
+	margin-left:-1em;
+	font-weight: bold;
+}
+
+.chatboxmessagecontent {
+}
+
+.chatboxoptions {
+	float: right;
+}
+
+.chatboxoptions a {
+	text-decoration: none;
+	color: white;
+	font-weight:bold;
+	font-family:Verdana,Arial,"Bitstream Vera Sans",sans-serif;
+}
+.chatboxoptions img {
+  border:none;
+  width:16px;
+  height:16px;
+}
+
+.chatboxtitle {
+	float: left;
+}
+.chatboxtitle a { color:#fff; font-weight:bold; text-decoration:none; }
+#sohbetkisilistesi{
+
+}
+.sohbetkisilistesi a {
+  width:190px;
+  height:32px;
+  position:relative;
+  display:block;
+  color:#7b7b7b;
+  text-decoration:none;
+  font-weight:bold;
+  line-height:10px;
+}
+.sohbetkisilistesi img { border:none; padding-top:1px; }
+.sohbetkisilistesi .sohbetavatar {
+  width:30px;
+  height:30px;
+  padding:1px 3px 0px 0px;
+  position:absolute;
+}
+.sohbetkisilistesi .sohbetisim {
+  position:absolute;
+  top:10px;
+  left:35px;
+}
+.sohbetkisilistesi .sohbetdurum {
+  position:absolute;
+  top:10px;
+  right:5px;
+}
+.sohbetayarlar {
+  width:100px;
+  height:20px;
+  position:absolute;
+  top:29px;
+  right:1px;
+  background:#eee;
+  display:none;
+  padding:4px;
+ 	border-left:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	z-index:9999;
+}
+.sohbetayarlar a { color:#000; font-weight:bold; text-decoration:none;}
+.sohbetayarlar a:hover { text-decoration:underline; }
+.sohbetarama {
+  width:206px;
+  height:22px;
+  position:absolute;
+  background-color:#fff;
+  left:0px;
+  bottom:0px;
+}
+.sohbetarama input {
+  width:208px;
+  height:20px;
+  border:1px solid #cccccc;
+  background:url(../sohbetarama.jpg) no-repeat;
+  background-color:#fff;
+  background-position:2px 1px;
+  padding-left:24px;
+}

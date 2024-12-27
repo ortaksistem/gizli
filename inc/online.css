@@ -1,0 +1,145 @@
+﻿body {
+	background:#fff;
+	margin:4px;
+}
+#ust {
+	width:350px;
+	height:79px;
+	background:url(../img/online-logo.jpg) no-repeat;
+}
+#header {
+	width:350px;
+	height:69px;
+	background:url(../img/online-header.jpg) no-repeat;
+}
+.header {
+	margin:2px 0px 0px 15px;
+	padding:0px;
+}
+.header ul {
+	margin:0px;
+	padding:0px;
+}
+.header li {
+	float:left;
+	width:99px;
+	height:18px;
+}
+.header img {
+	border:0px;
+}
+#listeust {
+	width:350px;
+	height:32px;
+	background:url(../img/online-listeust.jpg) no-repeat;
+}
+#liste {
+	width:350px;
+	height:432px;
+	background:url(../img/online-listebg.jpg) no-repeat;
+}
+.liste {
+	margin:0px 0px 0px 18px;
+	font-family:Arial;
+	color:#393939;
+}
+.liste a {
+	font-family:Arial;
+	color:#393939;
+	text-decoration:none;	
+}
+.liset a:hover {
+	text-decoration:underline;
+}
+.liste ul {
+	width:330px;
+	height:27px;
+}
+.liste li {
+	float:left;
+}
+.liste .tur {
+	width:68px;
+}
+.liste .kullanici {
+	width:99px;
+}
+.liste .yas {
+	width:36px;
+}
+.liste .sehir {
+	width:92px;
+}
+.liste .mesaj {
+	width:16px;
+	padding-top:2px;
+}
+#liste2 {
+	width:350px;
+	height:auto;
+	background:url(../img/online-liste-bg.jpg) repeat-y;
+}
+.liste2 {
+	margin:0px 0px 0px 18px;
+	font-family:Arial;
+	color:#393939;
+}
+.liste2 a {
+	font-family:Arial;
+	color:#393939;
+	text-decoration:none;	
+}
+.liset2 a:hover {
+	text-decoration:underline;
+}
+.liste2 ul {
+	width:330px;
+	height:27px;
+}
+.liste2 li {
+	float:left;
+}
+.liste2 .tur {
+	width:68px;
+}
+.liste2 .kullanici {
+	width:99px;
+}
+.liste2 .yas {
+	width:36px;
+}
+.liste2 .sehir {
+	width:92px;
+}
+.liste2 .mesaj {
+	width:16px;
+	padding-top:2px;
+}
+
+#sayfa {
+	width:350px;
+	height:22px;
+	background:url(../img/online-sayfa.jpg) no-repeat;
+	text-align:center;
+	font-family:Arial;
+	color:#393939;
+	font-weight:bold;
+	font-size:14px;
+}
+.sayfa {
+	padding:4px 0px 0px 0px;
+}
+.selectler {
+	width:130px;
+	font-family: Tahoma; 
+	color:#393939;
+	padding:2px;
+	font-weight:bold;
+	font-size:13px;
+	
+}
+#alt {
+	width:350px;
+	height:20px;
+	background:url(../img/online-alt.jpg) no-repeat;
+}

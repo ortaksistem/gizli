@@ -1,0 +1,26 @@
+.solmenu { width:194px; font-size:12px; padding:0; margin:0; font-family: "Trebuchet MS, Verdana, Arial, Helvetica, sans-serif"; font-weight:regular; }
+.solmenu a { font-size:0.95em; font-family: "Trebuchet MS"; color:#dd2e2e; text-decoration:none; cursor:pointer; padding:0; margin:0;}
+.solmenu a:hover { color:#6f0606; text-decoration:underline; }
+.solmenu .alt { width:194px; height:6px; background:url(../img/yeni-sol-menu-alt.jpg) no-repeat; padding:0; margin:0; }
+.solmenu ul {list-style-type: none; padding:0px; margin:0px; }
+.solmenu li { width:194px; height:26px; background:url(../img/yeni-sol-menu-li.jpg) no-repeat; margin-bottom:-5px; padding:0; }
+.solmenu span { float:left; margin-top:5px; margin-left:24px; padding:0; }
+.solmenu .durummerkezi { width:194px; height:40px; background:url(../img/yeni-sol-menu-durum.jpg) no-repeat; text-indent:-9999px;}
+.solmenu .durummerkezi a { width:194px; height:40px; display:block; }
+.solmenu .mesajmerkezi { width:194px; height:40px; background:url(../img/yeni-sol-menu-mesaj.jpg) no-repeat; text-indent:-9999px;}
+.solmenu .mesajmerkezi a { width:194px; height:40px; display:block; }
+.solmenu .aramamerkezi { width:194px; height:40px; background:url(../img/yeni-sol-menu-arama.jpg) no-repeat; text-indent:-9999px;}
+.solmenu .aramamerkezi a { width:194px; height:40px; display:block; }
+.solmenu .arkadasmerkezi { width:194px; height:40px; background:url(../img/yeni-sol-menu-arkadas.jpg) no-repeat; text-indent:-9999px;}
+.solmenu .arkadasmerkezi a { width:194px; height:40px; display:block; }
+.solmenu .profilmerkezi { width:194px; height:40px; background:url(../img/yeni-sol-menu-profil.jpg) no-repeat; text-indent:-9999px;}
+.solmenu .profilmerkezi a { width:194px; height:40px; display:block; }
+.solmenu .bosluk { height:3px; }
+.solmenu .aramamerkezitablo { display:none; }
+.solmenu .aramamerkezitablo a { color:#2cb9c9; }
+.solmenu .mesajmerkezitablo { display:none; }
+.solmenu .mesajmerkezitablo a { color:#ab35be; }
+.solmenu .profilmerkezitablo { display:none; }
+.solmenu .profilmerkezitablo a { color:#fb5423; }
+.solmenu .arkadasmerkezitablo { display:none; }
+.solmenu .arkadasmerkezitablo a { color:#fd319f; }

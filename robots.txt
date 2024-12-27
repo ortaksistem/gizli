@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /index.php
+Disallow: /?MA
+Disallow: /?ref=bayandul
+Disallow: /?kat_id=10
+Disallow: /?ref=arapartner/
+Disallow: /?ref=arapartner
+Disallow: /?ref=hikaye
+Disallow: /?ref=evlicift
+Disallow: /?ref=macadogru
+Disallow: /index.php?sayfa=onay_maili
+Disallow: /index.php?sayfa=sifremi_unuttum
+Disallow: /index.php?sayfa=kullanim_sartlari
+Disallow: /?islem=yeni&kime=devrim_35
+Disallow: /?sayfa=uyeol4&id=130316
+Disallow: /?ref=macadogru
+Disallow: /?ref=biz

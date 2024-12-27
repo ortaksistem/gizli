@@ -1,0 +1,1904 @@
+<?
+
+$uyeid = uyeid();
+
+if(!is_numeric($uyeid)) header("Location: index.php");
+
+$uyeadi = uyeadi();
+
+$adi = uyebilgi("ad") ." ". uyebilgi("soyad");
+
+$tel = "+9". uyebilgi("tel");
+
+$tel = str_replace("-", "", $tel);
+
+$eposta = uyebilgi("email");
+?>
+<html>
+<head>
+<meta http-equiv="Content-Language" content="tr">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9">
+<title>Üyelik Yükselt <?=$uyeadi?></title>
+<meta name="keywords" content="<?=_KEYWORDS?>">
+<meta name="description" content="<?=_DESCRIPTION?>">
+<meta name="copyright" content="Copyright (c) 2009 <?=_AD?>">
+<link rel="stylesheet" href="inc/zd.css" type="text/css" />
+<link rel="stylesheet" href="inc/basic.css" type="text/css" />
+<script type="text/javascript" src="inc/jquery.js"></script>
+<script type='text/javascript' src='inc/jquery.simplemodal.js'></script>
+<style>
+	body {
+		background: url(img/bg.gif);
+	}
+</style>
+<script type="text/javascript">
+	function menuler(menu){ 
+		
+		$("#mesajmerkezitablo").hide();
+		$("#arkadasmerkezitablo").hide();
+		$("#aramamerkezitablo").hide();
+		$("#profilmerkezitablo").hide();
+		
+		$("#"+menu+"tablo").show("slow");
+	}
+	
+	function odeme(tur){
+	
+		$(".kredikarti").hide();
+		$(".havale").hide();
+		
+		$("."+tur).show();
+	
+	}
+	
+	function tutar(nekadar, ne){
+	
+		$(".tutar").html(nekadar+" TL <input type='hidden' name='tutar' id='tutar' value='"+ne+"'>");
+	
+	}
+	
+	function odemekredikarti(){
+	
+		klavye_gizle();
+		
+		var ad = $("#ad").val();
+		var tel = $("#tel").val();
+		var mail = $("#mail").val();
+		var num1 = $("#num1").val();
+		var num2 = $("#num2").val();
+		var num3 = $("#num3").val();
+		var num4 = $("#num4").val();
+		var ay = $("#ay").val();
+		var yil = $("#yil").val();
+		var cvc = $("#cvc").val();
+		var tutar = $("#tutar").val();
+		
+		if(ad == ""){
+			$("#kredikartisonuc").html("<font color=red><b>Lütfen adınızı yazın</b></font>");
+		}
+		else if(tel == ""){
+			$("#kredikartisonuc").html("<font color=red><b>Lütfen telefon numaranızı yazın</b></font>");
+		}
+		else if(mail == ""){
+			$("#kredikartisonuc").html("<font color=red><b>Lütfen email adresinizi yazın</b></font>");
+		}
+		else if(num1 == "" || num2 == "" || num3 == "" || num4 == ""){
+			$("#kredikartisonuc").html("<font color=red><b>Kredi kartı numaranızı kontrol ediniz</b></font>");
+		}
+		else if(cvc == ""){
+			$("#kredikartisonuc").html("<font color=red><b>CVC numarasını kontrol ediniz</b></font>");
+		}
+		else if(tutar == "" || tutar == "undefined"){
+			$("#kredikartisonuc").html("<font color=red><b>İstediğiniz üyelik tipi ve süresini seçiniz</b></font>");
+		}
+		else {
+			$("#kredikartisonuc").html();
+			mahirixpencere("Ödeme Alınıyor", "<p align=center><img src='img/loading.gif' /> <font color=red><b>Lütfen Bekleyin</b></font></p>");
+
+			jQuery.ajax({
+				type : 'POST',
+				url : 'inc/odeme.php',
+				data : "islem=kredikarti&ad="+ad+"&tel="+tel+"&mail="+mail+"&num1="+num1+"&num2="+num2+"&num3="+num3+"&num4="+num4+"&ay="+ay+"&yil="+yil+"&cvc="+cvc+"&tutar="+tutar,
+				success: function(sonuc){	
+					if(sonuc == "hata1"){
+						mahirixpencereguncelle("<p align=center><font color=red><b>Üyelik Tipini seçmediniz</b></font></p>");
+					}
+					else if(sonuc == "hata2"){
+						window.location = 'index.php?sayfa=odeme_alinamadi';
+					}
+					else {
+						window.location = 'index.php?sayfa=odeme_alindi&tur=1';
+						$(".kredikarti").html("<td>&nbsp</td>");
+					}
+					
+				}
+			})
+				
+		}
+	}
+	
+	function odemehavale(){
+	
+		var ad = $("#ad1").val();
+		var tel = $("#tel1").val();
+		var mail = $("#mail1").val();
+		var tutar = $("#tutar").val();
+		var mesaj = $("#mesaj").val();
+		var banka = $("#banka").val();
+		
+		if(ad == ""){
+			$("#havalesonuc").html("<font color=red><b>Lütfen adınızı yazın</b></font>");
+		}
+		else if(tel == ""){
+			$("#havalesonuc").html("<font color=red><b>Lütfen telefon numaranızı yazın</b></font>");
+		}
+		else if(mail == ""){
+			$("#havalesonuc").html("<font color=red><b>Lütfen email adresinizi yazın</b></font>");
+		}
+		else if(mesaj == ""){
+			$("#havalesonuc").html("<font color=red><b>Lütfen mesaj kısmına gerekli bilgileri yazın</b></font>");
+		}
+		else if(banka == ""){
+			$("#havalesonuc").html("<font color=red><b>Lütfen ödeme yaptığınız bankayı seçiniz</b></font>");
+		}
+		else {
+			$("#havalesonuc").html();
+			mahirixpencere("Ödeme Alınıyor", "<p align=center><img src='img/loading.gif' /> <font color=red><b>Lütfen Bekleyin</b></font></p>");
+
+			jQuery.ajax({
+				type : 'POST',
+				url : 'inc/odeme.php',
+				data : "islem=havale&ad="+ad+"&tel="+tel+"&mail="+mail+"&mesaj="+mesaj+"&tutar="+tutar+"&banka="+banka,
+				success: function(sonuc){		
+					if(sonuc == "hata1"){
+						mahirixpencereguncelle("<p align=center><font color=red><b>Üyelik Tipini seçmediniz</b></font></p>");
+					}
+					else if(sonuc == "hata2"){
+						window.location = 'index.php?sayfa=odeme_alinamadi';
+					}
+					else {
+						window.location = 'index.php?sayfa=odeme_alindi&tur=2';
+						$(".havale").html("<td>&nbsp</td>");
+					}
+					
+				}
+			})
+				
+		}
+	}
+	
+    function klavye(yer, hangi){
+		$("#"+yer).show();
+		$("#"+yer).html('<tr><td><input type="button" id="21" name="21" value="1" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td><input type="button" id="22" name="22" value="2" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td><input type="button" id="23" name="23" value="3" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td></tr><tr><td><input type="button" id="24" name="24" value="4" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td><input type="button" id="25" name="25" value="5" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td><input type="button" id="26" name="26" value="6" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td></tr><tr><td><input type="button" id="27" name="27" value="7" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td><input type="button" id="28" name="28" value="8" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td><input type="button" id="29" name="29" value="9" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td></tr><tr><td><input type="button" id="20" name="20" value="0" class="inputlar" onclick="klavye_yazdir(\''+hangi+'\', this.value)" /></td><td> </td><td> </td></tr>');
+	}
+    
+    function klavye_gizle(){
+		$("#klavye").hide();
+		$("#klavye2").hide();
+    }
+    
+    function klavye_yazdir(hangi, key){
+        var val = document.all[""+hangi+""].value;
+        if(val.length < 4){
+		val = ""+val+""+key+"";
+		document.all[""+hangi+""].value = val;
+		}
+    }
+
+	function cvc_code(){
+		mahirixpencere("Cvc Kodu", "<p align=center><img src=img/cvc_code.gif /></p>");	
+	}
+</script>
+</head>
+<body onLoad="menuler('durummerkezi');">
+<div id="mahirix-modal-content">
+	<div id="mahirix-model-header">
+		<div id="mahirix-model-title"></div>
+		<div id="mahirix-model-title-kapat"><a href="javascript:void(0)" onclick="mahirixmodelkapat();" title="Kapat"><img src="img/mahirix_alert_kapat.png" border="0" /></a></div>
+	</div>
+	<div style="clear:both;"></div>
+	<div id="mahirix-model-icc"></div>
+	<div id="mahirix-model-alt"></div>
+</div>
+<table border="0" width="100%" id="table1" cellspacing="0" cellpadding="0" height="100%">
+	<tr>
+		<td width="16">&nbsp;</td>
+		<td width="790" valign="top">
+		<table border="0" width="100%" id="table2" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>
+				<table border="0" width="100%" id="table3" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="10" background="img/ste_golge_sol.gif">&nbsp;</td>
+						<td bgcolor="#FFFFFF">
+						<table border="0" width="100%" id="table13" cellspacing="0" cellpadding="0">
+							
+							<?php include("inc/giris-ust.php"); ?>
+							
+							<tr>
+								<td background="img/ic_alan_gri_bg.gif">
+								<table border="0" width="100%" id="table14" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="10">&nbsp;</td>
+										<td width="200" valign="top">
+										
+										<?php include("inc/giris-sol.php"); ?>
+										
+										</td>
+										
+										
+										<td width="6">&nbsp;</td>
+										<td width="540" valign="top" align="center">
+										<!-- icerik -->
+										
+									<table border="0" width="100%" id="table15" cellspacing="0" cellpadding="0">
+											<tr>
+												<td height="45" background="img/pncere1_a_ust.gif">
+												<table border="0" width="100%" id="table40" cellspacing="0" cellpadding="0">
+													<tr>
+														<td width="20" height="45">&nbsp;</td>
+														<td valign="bottom">
+														<p class="tit_arama_mer">
+														<font color="#000000">
+														<span style="font-size: 14pt">Üyeliğimi Yükselt</span></font></td>
+														<td width="100" align="right">
+														&nbsp;</td>
+														<td width="20">&nbsp;</td>
+													</tr>
+												</table>
+												</td>
+											</tr>
+											<tr>
+												<td background="img/pncere1_a_bg.gif">
+												<table border="0" width="100%" id="table16" cellspacing="0" cellpadding="0">
+													<tr>
+														<td height="15">
+														</td>
+													</tr>
+													<tr>
+														<td align="center">
+														<img border="0" src="img/mavikirmiziserit.gif" width="536" height="7"></td>
+													</tr>
+													<tr>
+														<td>
+												<table border="0" width="100%" id="table203" cellspacing="0" cellpadding="0">
+													<tr>
+														<td height="12"></td>
+														<td width="510" height="12">
+														</td>
+														<td height="12"></td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+															<tr>
+																<td width="245" valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<table border="0" style="border-collapse: collapse" cellpadding="0">
+																			<tr>
+																				<td width="8"><img border="0" src="img/iko_ok_mavi.gif" width="11" height="11"></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="tit_zdshop_mer"><font color="#0000FF">MEDIUM ÜYELİK</font></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="cc">AVANTAJLARI</td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<p class="form_txt">
+																		* Günlük 
+																		25 mesaj 
+																		atabilirler.<br>* 
+																		Günlük 
+																		sınırsız 
+																		mesaj 
+																		alabilirler.<br>* 
+																		Giden 
+																		mesaj 
+																		saklama 
+																		limiti 50 dir.<br>* 
+																		Arşivde 
+																		mesaj 
+																		saklama 
+																		limiti 
+																		50 dir.<br>* 
+																		Arama 
+																		seçenekleri 
+																		gelişmiştir.<br>* 
+																		Kendilerine 
+																		öpücük 
+																		atanları 
+																		görebilirler.<br>* 
+																		Profillerine 
+																		bakanları 
+																		görebilirler.<br>* 
+																		Üyelere 
+																		günde 15 
+																		adet 
+																		öpücük 
+																		yollayabilirler.<br>* 
+																		Yardım 
+																		maillerinde 
+																		öncelikli 
+																		cevaplanırlar.<br>* 
+																		Aramalarda 
+																		Large 
+																		üyeden 
+																		sonra 
+																		gelirler.<br>* 
+																		Okey 
+																		odalarına 
+																		girebilirler.<br>* 
+																		Sohbet 
+																		odalarına 
+																		girebilirler.<br>* 
+																		Web cam 
+																		odalarına 
+																		girebilirler.</td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																	</tr>
+																</table>
+																</td>
+																<td width="25">&nbsp;</td>
+																<td width="245" valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<table border="0" style="border-collapse: collapse" cellpadding="0">
+																			<tr>
+																				<td width="8"><img border="0" src="img/iko_ok_kirmizi.gif" width="11" height="11"></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="tit_profil_mer"><font color="#EC0000">LARGE ÜYELİK</font></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="cc">AVANTAJLARI</td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<p class="form_txt">
+																		* Günlük 
+																		sınırsız mesaj 
+																		atabilirler.<br>* 
+																		Günlük 
+																		sınırsız 
+																		mesaj 
+																		alabilirler.<br>* 
+																		Giden 
+																		mesaj 
+																		saklama 
+																		limiti 
+																		200 dir.<br>
+																		* 
+																		Arşivde 
+																		mesaj 
+																		saklama 
+																		limiti 
+																		200 dir.<br>* 
+																		Arama 
+																		seçenekleri 
+																		gelişmiştir.<br>* 
+																		Kendilerine 
+																		öpücük 
+																		atanları 
+																		görebilirler.<br>* 
+																		Profillerine 
+																		bakanları 
+																		görebilirler.<br>* 
+																		Üyelere 
+																		günde 
+																		sınırsız 
+																		öpücük 
+																		yollayabilirler.<br>* 
+																		Yardım 
+																		maillerinde 
+																		öncelikli 
+																		cevaplanırlar.<br>* 
+																		Aramalarda 
+																		en üst 
+																		sırada 
+																		yer 
+																		alırlar.<br>* 
+																		Okey 
+																		odalarına 
+																		girebilirler.<br>* 
+																		Sohbet 
+																		odalarına 
+																		girebilirler.<br>* 
+																		Web cam 
+																		odalarına 
+																		girebilirler.</td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																	</tr>
+																</table>
+																</td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510">&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510">
+														<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+															<tr>
+																<td width="245" valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<table border="0" style="border-collapse: collapse" cellpadding="0">
+																			<tr>
+																				<td width="8"><img border="0" src="img/iko_ok_mavi.gif" width="11" height="11"></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="tit_zdshop_mer"><font color="#999999">ÜYELİK</font></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="cc">PAKETLERİ</td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	</table>
+																</td>
+																<td width="25">&nbsp;</td>
+																<td width="245" valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<table border="0" style="border-collapse: collapse" cellpadding="0">
+																			<tr>
+																				<td width="8"><img border="0" src="img/iko_ok_kirmizi.gif" width="11" height="11"></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="tit_zdshop_mer"><font color="#999999">ÜYELİK</font></td>
+																				<td width="8">&nbsp;</td>
+																				<td>
+																				<p class="cc">PAKETLERİ</td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10"></td>
+																	</tr>
+																</table>
+																</td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510">
+														<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+															<tr>
+																<td width="245" valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	
+																	<?php
+																		$result = mysql_query("select aylik, aylik3, aylik6, yillik, sinirsiz from "._MX."seviye where id='2'");
+																		
+																		list($aylik, $aylik3, $aylik6, $yillik, $sinirsiz) = mysql_fetch_row($result);
+																		
+																	?>
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_mavi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$aylik?>, '2;aylik')" value="2;aylik"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">1 Aylık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#A0F3F8"><b><?=$aylik?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_mavi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$aylik3?>, '2;aylik3')" value="2;aylik3"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">3 Aylık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#A0F3F8"><b><?=$aylik3?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>	
+
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_mavi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$aylik6?>, '2;aylik6')" value="2;aylik6"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">6 Aylık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#A0F3F8"><b><?=$aylik6?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_mavi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$yillik?>, '2;yillik')" value="2;yillik"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">1 Senelik Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#A0F3F8"><b><?=$yillik?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	
+																	<?php
+																	
+																	if($sinirsiz){
+																	?>
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_mavi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$sinirsiz?>, '2;sinirsiz')" value="2;sinirsiz"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">Sınırsız Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#A0F3F8"><b><?=$sinirsiz?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_mavi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	<?php
+																		}
+																	?>
+																	</table>
+																</td>
+																<td width="25">&nbsp;</td>
+																<td width="245" valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<?php
+																		$result = mysql_query("select aylik, aylik3, aylik6, yillik, sinirsiz from "._MX."seviye where id='1'");
+																		
+																		list($aylik, $aylik3, $aylik6, $yillik, $sinirsiz) = mysql_fetch_row($result);
+																		
+																	?>
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_kirmizi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$aylik?>, '1;aylik')" value="1;aylik"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">1 Aylık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#FFDA09"><b><?=$aylik?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_kirmizi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$aylik3?>, '1;aylik3')" value="1;aylik3"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">3 Aylık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#FFDA09"><b><?=$aylik3?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>	
+																	
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_kirmizi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$aylik6?>, '1;aylik6')" value="6;aylik6" checked></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">6 Aylık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#FFDA09"><b><?=$aylik6?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>	
+																	
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_kirmizi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$yillik?>, '2;yillik')" value="1;yillik"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">1 Yıllık Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#FFDA09"><b><?=$yillik?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>
+																	<?php
+																	
+																	if($sinirsiz){
+																	?>
+																	<tr>
+																		<td width="245">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+
+																			<tr>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sol.gif" width="10" height="36"></td>
+																				<td background="img/paket_kirmizi2_bg.gif" height="36">
+																				<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																					<tr>
+																						<td width="20"><input type="radio" name="tur" id="tur" onclick="tutar(<?=$sinirsiz?>, '1;sinirsiz')" value="1;sinirsiz"></td>
+																						<td width="10">&nbsp;</td>
+																						<td width="110">
+																				<p class="tx"><font color="#FFFFFF">Sınırsız Üyelik</font></td>
+																						<td>&nbsp;</td>
+																						<td>
+																						<p class="msg_tit"><font color="#FFDA09"><b><?=$sinirsiz?> TL</b></font></td>
+																						<td>&nbsp;</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td width="10"><img border="0" src="img/paket_kirmizi2_sag.gif" width="10" height="36"></td>
+																			</tr>
+																		</table>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																	</tr>	
+																	<?php
+																	}
+																	?>													
+																	</table>
+																</td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" height="44" align="center">
+														<p class="form_txt">
+														Lütfen kendinize uygun 
+														paketi seçin ve ödeme 
+														tipini belirleyin</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														<table border="0" style="border-collapse: collapse" cellpadding="0">
+															<tr>
+																<td>
+																<a href="javascript:odeme('kredikarti')"><img border="0" src="img/btn_kk_satinal.gif" width="157" height="31"></a></td>
+																<td width="25">&nbsp;</td>
+																<td>
+																<a href="javascript:odeme('havale')"><img border="0" src="img/btn_havale_satinal.gif" width="157" height="31"></a></td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr class="kredikarti" style="display:none">
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td width="15" align="center">
+																		<img border="0" src="img/zdok.gif" width="6" height="5"></td>
+																		<td>
+																		<p class="form_txt">
+																		<b>KREDİ 
+																		KARTI 
+																		İLE 
+																		ÖDEMEDE 
+																		DİKKAT 
+																		EDİLMESİ 
+																		GEREKENLER</b></td>
+																		<td width="15">&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td width="15" height="10"></td>
+																		<td height="10"></td>
+																		<td width="15" height="10"></td>
+																	</tr>
+																	<tr>
+																		<td width="15">&nbsp;</td>
+																		<td>
+																		<p class="form_txt" align="justify">
+																		Kredi kartı numaranız, en yüksek güvenlikli sayfalarda, 256 bit şifrelenmiş olarak alınır. 
+Kredi kartı bilgileriniz kesinlikle sistem veritabanında ( kayıtlarında ) tutulmaz. Girmiş olduğunuz kredi kartı bilgileri doğrudan bankaya gönderilir. 
+Üyeliğiniz bittikten sonra sizden habersiz , sizin onayınız olmadan hiç bir şekilde kredi kartınızdan para çekilip üyeliğiniz uzatılmaz. 
+																		Formu 
+																		doldurduktan 
+																		sonra 
+																		sadece 1 
+																		kere 
+																		gönder 
+																		butonuna 
+																		tıklayınız. 
+																		Kredi 
+																		kartı 
+																		ekstrenizde 
+																		ödemeyi 
+																		alan 
+																		şirketin 
+																		ismi 
+																		geçecektir. 
+																		Site adı 
+																		geçmemektedir.</td>
+																		<td width="15">&nbsp;</td>
+																	</tr>
+																	</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr class="kredikarti" style="display:none">
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														<table border="0" width="100%" id="table307" cellspacing="0" cellpadding="0">
+															<tr>
+																<td>
+																<img border="0" src="img/pncre_alt_msg_oku_ust.gif" width="510" height="7"></td>
+															</tr>
+															<tr>
+																<td background="img/pncre_alt_msg_oku_bg.gif">
+																<table border="0" width="100%" id="table308" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td height="18"></td>
+																		<td width="494" height="27" align="right">
+																		<p class="tit_zdshop_mer">
+																		Kredi 
+																		Kartı 
+																		İle 
+																		Ödeme</td>
+																		<td height="18"></td>
+																	</tr>
+																	<tr>
+																		<td height="5"></td>
+																		<td width="494" height="5"></td>
+																		<td height="5"></td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Ödeyeceğiniz Tutar:</td>
+																				<td>
+																				<p class="form_txt"><b><span class="tutar"><?=$aylik6?> TL <input type='hidden' name='tutar' id='tutar' value='1;aylik6'></span></b></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Ad, Soyad:</td>
+																				<td>
+																				<p class="form_txt"><input type="text" name="ad" id="ad" class="inputlar" size="45" value="<?=$adi;?>"></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Telefon Numaranız:</td>
+																				<td>
+																				<p class="form_txt"><input type="text" name="tel" id="tel" class="inputlar" size="45" value="<?=$tel;?>"></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">E-posta Adresiniz:</td>
+																				<td>
+																				<p class="form_txt"><input type="text" name="mail" id="mail" class="inputlar" size="45" value="<?=$eposta;?>"></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Kredi Kartı Numaranız:</td>
+																				<td>
+																				<p class="form_txt">
+																				<input type="text" name="num1" id="num1" class="inputlar" size="5" maxlength="4" onfocus="klavye('klavye', 'num1')" />
+																				<input type="text" name="num2" id="num2" class="inputlar" size="5" maxlength="4" onfocus="klavye('klavye', 'num2')" /> 
+																				<input type="text" name="num3" id="num3" class="inputlar" size="5" maxlength="4" onfocus="klavye('klavye', 'num3')" /> 
+																				<input type="text" name="num4" id="num4" class="inputlar" size="5" maxlength="4" onfocus="klavye('klavye', 'num4')" />
+																			
+																		
+
+																				</td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																			<tr>
+																			<td colspan="2" width="220">&nbsp;</td>
+																			<td colspan="2">
+
+																			  <table id="klavye" style="display:none" border="0" bordercolor="#000000" bgcolor="#ffffff">
+
+
+																			  </table>
+																		
+																			&nbsp;
+																			</td>
+																			<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Son Kullanma Tarihi:</td>
+																				<td>
+																								<table border="0" id="table314" cellspacing="0" cellpadding="0">
+																									<tr>
+																										<td>
+																								<select name="ay" id="ay" class="selectler" onfocus="klavye_gizle()">
+																				
+																				<?php
+																					for($i = 1; $i<=12; $i++){
+																						
+																						if($i < 10) echo "<option value=\"0$i\">0$i</option>";
+																						else echo "<option value=\"$i\">$i</option>";
+																					
+																					}
+																				?>
+																				</select>
+																				</td>
+																										<td width="7">&nbsp;</td>
+																										<td height="27">
+																								<select name="yil" id="yil" class="selectler" onfocus="klavye_gizle()">
+																				<option value="16">2016</option>
+<option value="17">2017</option>
+<option value="18">2018</option>
+<option value="19">2019</option>
+<option value="20">2020</option>
+<option value="21">2021</option>
+<option value="22">2022</option>
+<option value="23">2023</option>
+<option value="24">2024</option>
+<option value="25">2025</option>
+<option value="26">2026</option>
+<option value="27">2027</option>
+<option value="28">2028</option>
+<option value="29">2029</option>
+<option value="30">2030</option>
+<option value="31">2031</option>
+<option value="32">2032</option>
+<option value="33">2033</option>																			
+<option value="34">2034</option>
+<option value="35">2035</option>
+<option value="36">2036</option>
+<option value="37">2037</option>																		</select></td>
+																									</tr>
+																								</table>
+																								</td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">CVC Numaranız:</td>
+																				<td>
+																								<table border="0" id="table657" cellspacing="0" cellpadding="0">
+																									<tr>
+																										<td><input type="text" name="cvc" id="cvc" size="3" class="inputlar" maxlength="3" onfocus="klavye('klavye2', 'cvc')"></td>
+																										<td width="7">&nbsp;</td>
+																										<td height="27">
+																										<p class="not"><a href="javascript:cvc_code()">Kredi kartınızın arkasındakı son üç rakam</a></td>
+																									</tr>
+																								</table>
+																								</td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																			<tr>
+																			<td colspan="2" width="220">&nbsp;</td>
+																			<td colspan="2">
+
+																			  <table id="klavye2" style="display:none" border="0" bordercolor="#000000" bgcolor="#ffffff">
+
+
+																			  </table>
+																		
+																			&nbsp;
+																			</td>
+																			<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		&nbsp;</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td height="7"></td>
+																		<td width="494" height="7"></td>
+																		<td height="7"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494" align="center">
+																		<table border="0" width="100%" id="table313" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td>&nbsp;</td>
+																				<td width="476" height="51" background="img/msg_oku_btn_bg.gif" align="right" valign="top">
+																				<table border="0" width="100%" id="table318" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td valign="top">
+																						<table border="0" style="border-collapse: collapse" cellpadding="0">
+																							<tr>
+																								<td width="20">&nbsp;</td>
+																								<td><img border="0" src="img/card_visa.gif" width="32" height="20"></td>
+																								<td width="10">&nbsp;</td>
+																								<td><img border="0" src="img/card_master.gif" width="31" height="20"></td>
+																							</tr>
+																						</table>
+																						</td>
+																						<td width="150" align="right">
+																				<table border="0" id="table319" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td width="13" height="20">&nbsp;</td>
+																						<td width="30" height="20">&nbsp;</td>
+																					</tr>
+																					<tr>
+																						<td width="13"><a href="javascript:odemekredikarti()"><img border="0" src="img/btn_gonderdavtet.gif" width="110" height="31"></a></td>
+																						<td width="30">&nbsp;</td>
+																					</tr>
+																				</table>
+																						</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td>&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+
+																</table>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																<img border="0" src="img/pncre_alt_msg_oku_alt.gif" width="510" height="7"></td>
+															</tr>
+															<tr>
+																<td><span id="kredikartisonuc"></span></td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr class="havale" style="display:none">
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td width="15" align="center">
+																		<img border="0" src="img/zdok.gif" width="6" height="5"></td>
+																		<td>
+																		<p class="form_txt">
+																		<b>
+																		HAVALE 
+																		İLE 
+																		ÖDEMEDE 
+																		DİKKAT 
+																		EDİLMESİ 
+																		GEREKENLER</b></td>
+																		<td width="15">&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td width="15" height="10"></td>
+																		<td height="10"></td>
+																		<td width="15" height="10"></td>
+																	</tr>
+																	<tr>
+																		<td width="15">&nbsp;</td>
+																		<td>
+																		<p class="form_txt" align="justify">
+																		Yukarıdaki ücret tablosunda kendinize uygun 
+																		olan üyelik 
+																		paketine ait ücreti hesabımıza yatırın. Ücreti yatırdıktan sonra ödeme yapmış olduğunuz dekont üzerindeki bazı bilgileri alt taraftaki formu kullanarak tarafımıza gönderin, 
+																		üyeliğinizi hemen 
+																		başlatalım... </td>
+																		<td width="15">&nbsp;</td>
+																	</tr>
+																	</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr class="havale" style="display:none">
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														<table border="0" width="100%" id="table658" cellspacing="0" cellpadding="0">
+															<tr>
+																<td>
+																<img border="0" src="img/pncre_alt_msg_oku_ust.gif" width="510" height="7"></td>
+															</tr>
+															<tr>
+																<td background="img/pncre_alt_msg_oku_bg.gif">
+																<table border="0" width="100%" id="table659" cellspacing="0" cellpadding="0">
+																	<tr>
+																		<td height="18"></td>
+																		<td width="494" height="27" align="right">
+																		<p class="tit_zdshop_mer">
+																		<font color="#FF6320">Havale 
+																		ile 
+																		Ödeme</font></td>
+																		<td height="18"></td>
+																	</tr>
+																	<tr>
+																		<td height="5"></td>
+																		<td width="494" height="5"></td>
+																		<td height="5"></td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Ödeyeceğiniz Tutar:</td>
+																				<td>
+																				<p class="form_txt"><b><span class="tutar"><?=$aylik6?> TL <input type='hidden' name='tutar' id='tutar' value='1;aylik6'></span></b></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Ad, Soyad:</td>
+																				<td>
+																				<p class="form_txt"><input type="text" name="ad1" id="ad1" value="<?=$adi?>" class="inputlar" size="45"></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Telefon Numaranız:</td>
+																				<td>
+																				<p class="form_txt"><input type="text" name="tel1" id="tel1" value="<?=$tel?>" size="45" class="inputlar"></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">E-posta Adresiniz:</td>
+																				<td>
+																				<p class="form_txt"><input type="text" name="mail1" id="mail1" class="inputlar" size="45" value="<?=$eposta?>"></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200">
+																				<p class="form_txt">Ödeme Yaptığınız Banka:</td>
+																				<td>
+																				<p class="form_txt">
+																				<select name="banka" id="banka" class="selectler">
+																					<option value="">Lütfen ödeme yaptığınız bankayı seçiniz</option>
+																					<option value="Garanti Bankası">Garanti Bankası</option>
+																					<option value="İş Bankası">İş Bankası</option>
+																					<option value="AkBank">Enpara</option>
+																				</select>
+																				</td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td width="494" bgcolor="#EAEAEA">
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																		<td>
+																		<img border="0" src="img/1px.gif" width="1" height="1"></td>
+																	</tr>
+																	<tr>
+																		<td height="6"></td>
+																		<td width="494" height="6">
+																		</td>
+																		<td height="6"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																			<tr>
+																				<td width="15">&nbsp;</td>
+																				<td height="27" width="200" valign="top">
+																				<p class="form_txt">Mesaj:<br>
+																				<br>
+																				<font color="#C32828">Havale dekontunudaki bilgileri (İşlem tarihi, havale dekontu) yan kolona giriniz..<br>
+																						&nbsp;</font></td>
+																				<td>
+																				<p class="form_txt"><textarea rows="10" name="mesaj" id="mesaj" cols="40" style="font-family: Tahoma; font-size: 8pt; padding-left: 1px; padding-right: 1px"></textarea></td>
+																				<td width="20">&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494">
+																		&nbsp;</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td height="7"></td>
+																		<td width="494" height="7"></td>
+																		<td height="7"></td>
+																	</tr>
+																	<tr>
+																		<td>&nbsp;</td>
+																		<td width="494" align="center">
+																		<table border="0" width="100%" id="table660" cellspacing="0" cellpadding="0">
+																			<tr>
+																				<td>&nbsp;</td>
+																				<td width="476" height="51" background="img/msg_oku_btn_bg.gif" align="right" valign="top">
+																				<table border="0" width="100%" id="table661" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td valign="top">
+																						<table border="0" style="border-collapse: collapse" cellpadding="0">
+																							<tr>
+																								<td width="20">&nbsp;</td>
+																								<td>
+																								<p class="merkez_profil"><span id="havalesonuc">* Lütfen Bilgileri Eksiksiz Giriniz</span></td>
+																							</tr>
+																						</table>
+																						</td>
+																						<td width="150" align="right">
+																				<table border="0" id="table662" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td width="13" height="20">&nbsp;</td>
+																						<td width="30" height="20">&nbsp;</td>
+																					</tr>
+																					<tr>
+																						<td width="13"><a href="javascript:odemehavale()"><img border="0" src="img/btn_gonderdavtet.gif" width="110" height="31"></a></td>
+																						<td width="30">&nbsp;</td>
+																					</tr>
+																				</table>
+																						</td>
+																					</tr>
+																				</table>
+																				</td>
+																				<td>&nbsp;</td>
+																			</tr>
+																		</table>
+																		</td>
+																		<td>&nbsp;</td>
+																	</tr>
+																	<tr>
+																		<td height="10">
+																		</td>
+																		<td width="494" height="10">
+																		</td>
+																		<td height="10">
+																		</td>
+																	</tr>
+																</table>
+																</td>
+															</tr>
+															<tr>
+																<td>
+																<img border="0" src="img/pncre_alt_msg_oku_alt.gif" width="510" height="7"></td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>&nbsp;</td>
+														<td width="510" align="center">
+														&nbsp;</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr class="havale" style="display:none">
+														<td>&nbsp;</td>
+														<td width="510">
+														<table border="0" style="border-collapse: collapse" cellpadding="0">
+															<tr>
+																<td bgcolor="#EFEFEF" width="12">&nbsp;</td>
+																<td bgcolor="#EFEFEF" height="26">
+																<p class="form_txt">
+																BANKA HESAP 
+																BİLGİLERİ</td>
+																<td bgcolor="#EFEFEF" width="12">&nbsp;</td>
+															</tr>
+														</table>
+														</td>
+														<td>&nbsp;</td>
+													</tr>
+													<tr>
+														<td>
+														<img border="0" src="img/1px.gif" width="1" height="1"></td>
+														<td width="510" align="center" bgcolor="#EFEFEF">
+														<img border="0" src="img/1px.gif" width="1" height="1"></td>
+														<td>
+														<img border="0" src="img/1px.gif" width="1" height="1"></td>
+													</tr>
+												</table>
+														</td>
+													</tr>
+													<tr class="havale" style="display:none">
+														<td height="15" align="center">
+														<table border="0" style="border-collapse: collapse" cellpadding="0">
+															<tr>
+																<td valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<img border="0" src="img/logo_garanti.gif" width="150" height="50"></td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b>	Hesap Sahibi:</b> Sezgin Akdemirci</td>
+																	</tr> 
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b> Hesap 
+																		No: 
+																		</b>	6678369</td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b>	Şube 
+																		Kodu: 
+																		</b>	349</td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																		<b> Iban :</b> TR50 0006 2000 3490 <br>0006 6783 69</td>
+																	</tr>
+																</table>
+																</td>
+																<td width="20">&nbsp;</td>
+																<td valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<img border="0" src="img/akbank.gif" width="150" height="50"></td>
+																	</tr>
+																<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b>	Hesap Sahibi:</b> Sezgin Akdemirci</td>
+																	</tr> 
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b> Hesap 
+																		No: 
+																		</b>80000555</td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b>	Şube 
+																		Kodu: 
+																		</b>03663</td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																		<b> Iban :</b> TR66 0011 1000 0000 <br>0080 0005 55</td>
+																	</tr>
+																</table>
+																</td>
+																<td width="20" valign="top">&nbsp;</td>
+																<td valign="top">
+																<table border="0" style="border-collapse: collapse" width="100%" cellpadding="0">
+																	<tr>
+																		<td>
+																		<img border="0" src="img/logo_isbank.gif" width="150" height="50"></td>
+																	</tr>
+															<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b>	Hesap Sahibi:</b> Sezgin Akdemirci</td>
+																	</tr> 
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b> Hesap 
+																		No: 
+																		</b>2248282</td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																	<b>	Şube 
+																		Kodu: 
+																		</b>1006</td>
+																	</tr>
+																	<tr>
+																		<td align="center">
+																		<p class="form_txt">
+																		<b> Iban :</b>TR12 0006 4000 0011<br>0062 2482 82</td>
+																	</tr>
+																</table>
+																</td>
+															</tr>
+														</table>
+														</td>
+													</tr>
+													<tr>
+														<td height="8">
+														<img border="0" src="img/1px.gif" width="1" height="1"></td>
+													</tr>
+												</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+														<img border="0" src="img/pncere1_alt.gif" width="540" height="9"></td>
+											</tr>
+											<tr>
+												<td height="12"></td>
+											</tr>
+											<tr>
+												<td height="12"></td>
+											</tr>
+											<tr>
+												<td height="12">
+												</td>
+											</tr>
+											</table>
+
+
+											
+										<!-- icerik sonu -->
+										</td>
+										<td width="8">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+							<tr>
+								<td>
+								<img border="0" src="img/ic_alan_gri_alt.gif" width="770" height="8"></td>
+							</tr>
+						</table>
+						</td>
+						<td width="10" background="img/ste_golge_sag.gif">&nbsp;</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td background="img/ste_alt2.gif" height="93" valign="top">
+				<table border="0" width="100%" id="table4" cellspacing="0" cellpadding="0">
+					<tr>
+						<td width="25" height="7"></td>
+						<td height="7"></td>
+						<td width="25" height="7"></td>
+					</tr>
+					<tr>
+						<td width="25" height="29">&nbsp;</td>
+						<td height="29">
+						<table border="0" id="table6" cellspacing="0" cellpadding="0">
+							<tr>
+								<td>
+								<table border="0" id="table7" cellspacing="0" cellpadding="0">
+									<tr>
+										<td><b><a class="c" href="index.php">ana sayfa</a></b></td>
+										<td width="16">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+								<td width="1">
+								<img border="0" src="img/mnu_alt_bol.gif" width="1" height="29"></td>
+								<td>
+								<table border="0" id="table8" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="16">&nbsp;</td>
+										<td><b><a class="c" href="index.php?sayfa=okey">okey oyna</a></b></td>
+										<td width="16">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+								<td width="1">
+								<img border="0" src="img/mnu_alt_bol.gif" width="1" height="29"></td>
+								<td>
+								<table border="0" id="table9" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="16">&nbsp;</td>
+										<td><b><a class="c" href="index.php?sayfa=sohbet">sohbet et</a></b></td>
+										<td width="16">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+								<td width="1">
+								<img border="0" src="img/mnu_alt_bol.gif" width="1" height="29"></td>
+								<td>
+								<table border="0" id="table10" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="16">&nbsp;</td>
+										<td><b><a class="c" href="index.php?sayfa=arkadas_onlineuyeler">online 
+										üyeler</a></b></td>
+										<td width="16">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+								<td width="1">
+								<img border="0" src="img/mnu_alt_bol.gif" width="1" height="29"></td>
+								<td>
+								<table border="0" id="table11" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="16">&nbsp;</td>
+										<td><b><a class="c" href="index.php?sayfa=uyelik_yukselt">üyeliğini 
+										yükselt</a></b></td>
+										<td width="16">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+								<td width="1">
+								<img border="0" src="img/mnu_alt_bol.gif" width="1" height="29"></td>
+								<td>
+								<table border="0" id="table12" cellspacing="0" cellpadding="0">
+									<tr>
+										<td width="16">&nbsp;</td>
+										<td><b><a class="c" href="index.php?sayfa=yardimmerkezi">yardım merkezi</a></b></td>
+										<td width="16">&nbsp;</td>
+									</tr>
+								</table>
+								</td>
+							</tr>
+						</table>
+						</td>
+						<td width="25" height="29">&nbsp;</td>
+					</tr>
+					<tr>
+						<td width="25" height="10"></td>
+						<td height="10"></td>
+						<td width="25" height="10"></td>
+					</tr>
+					<tr>
+						<td width="25">&nbsp;</td>
+						<td>
+						<table border="0" width="100%" id="table5" cellspacing="0" cellpadding="0">
+							<tr>
+								<td width="150">
+								<p class="copyright">Copyright 2010<br>
+								<?=_AD?></td>
+								<td align="right" valign="bottom">
+								<p class="c2"><a class="c1" href="index.php?sayfa=kullanim_sartlari">Kullanım 
+								Şartları</a>&nbsp; |&nbsp;
+								<a class="c1" href="index.php?sayfa=gizlilik_ilkeleri">Gizlilik İlkeleri</a>&nbsp; |&nbsp;
+								<a class="c1" href="index.php?sayfa=yardimmaili">Bize Ulaşın</a></td>
+							</tr>
+						</table>
+						</td>
+						<td width="25">&nbsp;</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor="#FFFFFF">&nbsp;</td>
+			</tr>
+		</table>
+		</td>
+		<td valign="top">
+		<table border="0" id="table169" cellspacing="0" cellpadding="0">
+			<tr>
+				<td width="15" height="156">&nbsp;</td>
+				<td width="161" height="156">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="15">&nbsp;</td>
+				<td width="161">
+				<?php include("inc/giris-sag.php"); ?>
+				</td>
+			</tr>
+			<tr>
+				<td width="15">&nbsp;</td>
+				<td width="161">&nbsp;</td>
+			</tr>
+			<tr>
+				<td width="15">&nbsp;</td>
+				<td width="161">&nbsp;</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+
+
+</body>
+</html>

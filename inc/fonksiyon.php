@@ -1,0 +1,58 @@
+<?php
+
+function suz($param){
+	return addslashes($param);
+}
+// bitti
+
+function turkce($string){
+     
+     $patterns[0] = '/Å'.chr(158).'/';    
+     $patterns[1] = '/ÅŸ/';
+     $patterns[2] = '/Ä°/';
+     $patterns[3] = '/Ä±/';
+     $patterns[4] = '/Ä'.chr(158).'/';
+     $patterns[5] = '/ÄŸ/';
+     $patterns[6] = '/Ãœ/';
+     $patterns[7] = '/Ã¼/';
+     $patterns[8] = '/Ã–/';
+     $patterns[9] = '/Ã¶/';
+     $patterns[10] = '/Ã‡/';
+     $patterns[11] = '/Ã§/';
+     
+
+     $replacements[0] = 'Þ'; 
+     $replacements[1] = 'þ';
+     $replacements[2] = 'Ý';
+     $replacements[3] = 'ý';
+     $replacements[4] = 'Ð';
+     $replacements[5] = 'ð';
+     $replacements[6] = 'Ü';
+     $replacements[7] = 'ü';
+     $replacements[8] = 'Ö';
+     $replacements[9] = 'ö';
+     $replacements[10] = 'Ç';
+     $replacements[11] = 'ç';
+
+     
+     return preg_replace($patterns, $replacements, $string);
+}
+// bitti
+
+function turkcejquery($param){
+	$param = str_replace("Ç", "&#199;", $param);
+	$param = str_replace("ç", "&#231;", $param);
+	$param = str_replace("Ý", "&#304;", $param);
+	$param = str_replace("ý", "&#305;", $param);
+	$param = str_replace("Ð", "&#286;", $param);
+	$param = str_replace("ð", "&#287;", $param);
+	$param = str_replace("Ö", "&#214;", $param);
+	$param = str_replace("ö", "&#246;", $param);
+	$param = str_replace("Ü", "&#220;", $param);
+	$param = str_replace("ü", "&#252;", $param);
+	$param = str_replace("Þ", "&#350;", $param);
+	$param = str_replace("þ", "&#351;", $param);
+	return $param;
+}
+// bitti
+?>

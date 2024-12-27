@@ -1,0 +1,1 @@
+<?php echo $_SESSION[_COOKIE."arkadas"]; ?>

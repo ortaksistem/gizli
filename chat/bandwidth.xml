@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bandwidth>
+	<item>
+		<nm>56k Modem</nm>
+		<df>0</df>
+		<bytes>5600</bytes>
+		<q>0</q>
+		<fps>5</fps>
+		<kfps>20</kfps>
+		<w>160</w>
+		<h>120</h>
+		<snd>8</snd>
+	</item>
+	<item>
+		<nm>128 ISDN</nm>
+		<df>0</df>
+		<bytes>16000</bytes>
+		<q>0</q>
+		<fps>7</fps>
+		<kfps>28</kfps>
+		<w>160</w>
+		<h>120</h>
+		<snd>8</snd>
+	</item>
+	<item>
+		<nm>256 DSL</nm>
+		<df>1</df>
+		<bytes>32000</bytes>
+		<q>0</q>
+		<fps>10</fps>
+		<kfps>40</kfps>
+		<w>200</w>
+		<h>150</h>
+		<snd>11</snd>
+	</item>
+	<item>
+		<nm>Cable</nm>
+		<df>0</df>
+		<bytes>64000</bytes>
+		<q>0</q>
+		<fps>15</fps>
+		<kfps>60</kfps>
+		<w>320</w>
+		<h>240</h>
+		<snd>11</snd>
+	</item>
+</bandwidth>

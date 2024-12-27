@@ -1,0 +1,16 @@
+h3 {color:#fff; font-size:1.3em; padding:0; margin:0; padding:10px 0px 0px 10px;}
+#mahirix-modal-content {display:none;height:auto;}
+
+/* Overlay */
+#simplemodal-overlay {background-color:#000; cursor:wait;}
+
+/* Container */
+#simplemodal-container {height:auto; width:600px; color:#000; padding:0px;}
+#simplemodal-container a {color:#ddd;}
+#simplemodal-container #basic-modal-content {padding:0px;}
+
+#mahirix-model-header {width:600px; height:45px;}
+#mahirix-model-title {background:url(../img/mahirix_alert_ust_sol.png); float:left; width:493px; height:45px;display:fixed;}
+#mahirix-model-title-kapat {float:right; width:107px; height:45px; display:fixed;}
+#mahirix-model-icc {background-color:#ffffff; padding:8px 8px 10px 8px;}
+#mahirix-model-alt {background:url(../img/mahirix_alert_alt.png); height:11px; display:fixed;}

@@ -1,0 +1,56 @@
+body {
+  background:#fff;
+  margin:0;
+  padding:0px;
+  font-size:12px;
+  font-family:Arial;
+}
+
+.genel { width:500px; }
+.logo { width:500px; height:47px; background:url(../img/on-uye-logo.jpg) no-repeat; position:relative; text-indent:-9999px;}
+.filtre { width:500px; height:54px; background:url(../img/on-uye-filtre-bg.jpg) repeat-x; position:relative; font-size:1em; color:#7b7b7b; font-weight:regular; }
+.filtre li { float:left; }
+.filtre .filtretext { margin:17px 0px 0px 15px; font-size:1.4em; font-weight:bold;}
+.filtre .cinsiyettext { margin:18px 0px 0px 70px; }
+.filtre .cinsiyetselect { margin:13px 0px 0px 10px; }
+.filtre .uyeliktipitext { margin:18px 0px 0px 20px; }
+.filtre .uyeliktipiselect { margin:13px 0px 0px 10px; }
+.filtre .selectbox { width:104px; height:23px; background:url(../img/on-uye-select.png) no-repeat; border:none; padding:0px 0px 0px 3px; overflow:hidden; }
+.filtre .selectbox select {
+   background: transparent;
+   width: 122px;
+   height:23px;
+   padding: 0px;
+   font-size: 14px;
+   border: none;
+}
+
+.liste { width:500px; font-size:1em; font-weight:regular; color:#8b8b8b; }
+.liste ul { width:500px; height:30px; background:#fff; position:relative; border-bottom:1px solid #e4e4e4; }
+.liste li { float:left; }
+.liste .adlar { background:#eeeeee; }
+.liste .tur { position:absolute; top:5px; left:19px; }
+.liste .tur2 { position:absolute; top:5px; left:45px; }
+.liste .nick { position:absolute; top:8px; left:107px;}
+.liste .yas { position:absolute; top:8px; left:280px; font-weight:bold;}
+.liste .yas2 { position:absolute; top:8px; left:280px; }
+.liste .sehir { position:absolute; top:8px; left:310px;}
+.liste .mesaj2 { width:20px; height:19px; position:absolute; top:5px; left:453px; text-indent:-9999px;}
+.liste .mesaj { width:20px; height:19px; background:url(../img/on-uye-mesaj-gonder.jpg) no-repeat; position:absolute; top:5px; left:453px; text-indent:-9999px;}
+.liste .mesaj a { width:20px; height:19px; display:block; }
+.liste a { color:#8b8b8b; text-decoration:none; }
+.liste a:hover { color:#c21a2e; }
+.yukari { width:80px; height:16px; float:right; margin:22px 22px 0px 0px; text-indent:-9999px; }
+.yukari a { width:80px; height:16px; background:url(../img/on-uye-yukari.jpg) no-repeat 0px 0px; display:block; }
+.yukari a:hover { width:80px; height:16px; background:url(../img/on-uye-yukari.jpg) no-repeat 0px -16px; display:block; }
+.liste .bayan { width:19px; height:19px; display:block; background:url(../img/on-uye-bayan.jpg) no-repeat; }
+.liste .erkek { width:19px; height:19px; display:block; background:url(../img/on-uye-erkek.jpg) no-repeat; }
+.liste .cift { width:19px; height:19px; display:block; background:url(../img/on-uye-cift.jpg) no-repeat; }
+.liste .lezbiyen { width:19px; height:19px; display:block; background:url(../img/on-uye-bayan.jpg) no-repeat; }
+.liste .bbayan { width:19px; height:19px; display:block; background:url(../img/on-uye-bayan.jpg) no-repeat; }
+.liste .bcift { width:19px; height:19px; display:block; background:url(../img/on-uye-cift.jpg) no-repeat; }
+.liste .berkek { width:19px; height:19px; display:block; background:url(../img/on-uye-gay.jpg) no-repeat; }
+.liste .trans { width:19px; height:19px; display:block; background:url(../img/on-uye-trans.jpg) no-repeat; }
+.liste .large { width:48px; height:19px; display:block; background:url(../img/on-uye-large.jpg) no-repeat; }
+.liste .medium { width:48px; height:19px; display:block; background:url(../img/on-uye-medium.jpg) no-repeat; }
+.liste .small { width:48px; height:19px; display:block; background:url(../img/on-uye-small.jpg) no-repeat; }

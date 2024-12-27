@@ -1,0 +1,84 @@
+body {
+  background:#e2e2e2;
+  margin:0;
+  padding:0px;
+  font-size:12px;
+  font-family:Arial;
+}
+.genel { width:733px; }
+
+.header { width:733px; height:48px; background:url(../img/profil-header-bg.jpg); position:relative; }
+.header .logo { width:407px; height:48px; background:url(../img/profil-logo.jpg); position:absolute; top:0px; right:0px; }
+.header-menu { width:733px; height:54px; background:url(../img/profil-header-menu.jpg); position:relative; }
+.header-menu .header-menu-sol { width:135px; height:54px; background:url(../img/profil-header-menu-sol.jpg); position:absolute; top:0px; left:0px; }
+.header-menu .header-menu-sag { width:5px; height:54px; background:url(../img/profil-header-menu-sag.jpg); position:absolute; top:0px; right:0px; }
+.header-menu .nick { position:absolute; top:14px; left:20px; font-size:1.8em; color:#fff; }
+.header-menu .menu { position:absolute; top:0px; right:5px; }
+.header-menu .menu li { float:left; }
+.header-menu .menu .ayrac { width:2px; height:54px; background:url(../img/profil-header-menu-ayrac.jpg); }
+
+.alt-menu { width:733px; height:211px; position:relative; }
+.alt-menu .alt-menu-sag { width:3px; height:211px; background:url(../img/profil-sag-bg.jpg) repeat-y; position:absolute; top:0px; right:0px; }
+.alt-menu .alt-menuler { width:730px; height:119px; background:url(../img/profil-alt-menu2-bg.jpg) repeat-x; text-align:right;}
+.alt-menu .resim { width:125px; height:152px; background:url(../img/profil-foto.png) no-repeat; position:absolute; top:13px; left:13px; z-index:3; }
+.alt-menu .resim .profil-resmi { margin:7px 0px 0px 8px; }
+.alt-menu .resim .profil-resim-adet { width:125px; float:left; margin-top:7px; text-align:center; font-size:1.1em; color:#c21a2e; font-size:bold;}
+.alt-menu .menumuz { float:right; margin:20px 10px 0px 0px; }
+.alt-menu .menumuz li {  width:72px; height:89px; float:left; text-indent:-9999px; }
+.alt-menu .menumuz .ayrac { width:1px; height:89px; background:url(../img/profil-menu-alt-ayrac.jpg) repeat-y; margin:0px 5px 0px 5px; }
+
+.alt-menu .menumuz .mesajgonder a { width:72px; height:89px; display:block; background:url(../img/profil-mesaj-gonder.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .mesajgonder a:hover { background:url(../img/profil-mesaj-gonder.jpg) no-repeat 0px -89px; }
+.alt-menu .menumuz .listemeekle a { width:72px; height:89px; display:block; background:url(../img/profil-listeme-ekle.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .listemeekle a:hover { background:url(../img/profil-listeme-ekle.jpg) no-repeat 0px -89px; }
+.alt-menu .menumuz .hediyegonder a { width:72px; height:89px; display:block; background:url(../img/profil-hediye-gonder.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .hediyegonder a:hover { background:url(../img/profil-hediye-gonder.jpg) no-repeat 0px -89px; }
+.alt-menu .menumuz .opucukyolla a { width:72px; height:89px; display:block; background:url(../img/profil-opucuk-gonder.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .opucukyolla a:hover { background:url(../img/profil-opucuk-gonder.jpg) no-repeat 0px -89px; }
+.alt-menu .menumuz .cicekyolla a { width:72px; height:89px; display:block; background:url(../img/profil-cicek-gonder.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .cicekyolla a:hover { background:url(../img/profil-cicek-gonder.jpg) no-repeat 0px -89px; }
+.alt-menu .menumuz .sikayetet a { width:72px; height:89px; display:block; background:url(../img/profil-sikayet-et.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .sikayetet a:hover { background:url(../img/profil-sikayet-et.jpg) no-repeat 0px -89px; }
+.alt-menu .menumuz .yasakla a { width:72px; height:89px; display:block; background:url(../img/profil-yasakla.jpg) no-repeat 0px 0px; }
+.alt-menu .menumuz .yasakla a:hover { background:url(../img/profil-yasakla.jpg) no-repeat 0px -89px; }
+
+
+.alt-menu .tik-menu { width:730px; height:92px; background:url(../img/profil-alt-menu-alt-bg.jpg); position:absolute; top:119px; left:0px; z-index:1;}
+.alt-menu .gri-cizgi { width:730px; height:1px; background:#e0e0e0; position:absolute; top:121px; left:0px; z-index:2;}
+.alt-menu .tik-menu-alti { width:730px; height:92px; position:relative; }
+.alt-menu .puanver { width:232px; position:absolute; top:20px; right:22px; font-size:1.1em; color:#7c7c7c; font-weight:bold; text-indent:0px;}
+.alt-menu .puanver strong { float:left; padding:5px 10px 0px 0px; }
+.alt-menu .puanver span { }
+.alt-menu .begen { width:199px; height:29px; background:url(../img/profil-select.png) no-repeat; position:absolute; top:20px; left:154px; overflow:hidden; }
+.alt-menu .begen select {
+   background: url(../img/profil-select.png) no-repeat;
+   width: 216px;
+   height:25px;
+   padding: 0px;
+   margin: 0px;
+   font-size: 14px;
+   border: none;
+}
+.alt-menu .begendim { background: url(../img/profil-select.png) no-repeat; }
+
+.alt-menu .tik-menu2 { width:730px; height:27px; position:absolute; top:65px; left:0px; }
+.alt-menu .tik-menu2 a { color:#878787; }
+.alt-menu .tik-menu2 a:hover { color:#cd0303; }
+.alt-menu .tik-menu2 li { width:110px; height:27px; background:url(../img/profil-tik-menu-pasif.png) no-repeat;  margin:0px 0px 0px 10px; padding-top:6px; float:left; overflow:hidden; text-align:center; font-size:0.95em; font-weight:bold; color:#878787; }
+.alt-menu .tik-menu2 .aktif { background:url(../img/profil-tik-menu-aktif.png) no-repeat; overflow:hidden; }
+.alt-menu .tik-menu2 .aktif a { color:#cd0303; }
+
+.icerik { width:733px; background:url(../img/profil-icerik-bg.jpg) #fff repeat-y; position:relative; overflow:hidden; }
+.sol { width:523px; background:url(../img/profil-sol-bg.jpg) repeat-x; margin:20px 0px 0px 20px; float:left; overflow:hidden; }
+.icerik .aciklama {}
+.icerik .aciklama li { width:523px; border-bottom:1px solid #f4f4f4; padding:8px 0px 4px 5px; color: #595959; font-family: Tahoma; font-size: 11px;  }
+.icerik .aciklama .td1 { width:170px; font-weight:normal; color: #595959; font-family: Tahoma; font-size: 11px; }
+.icerik .aciklama .td2 { width:350px; font-weight:bold; color: #595959; font-family: Tahoma; font-size: 11px; }
+.icerik .aciklama .td3 { width:175px; font-weight:bold; color: #595959; font-family: Tahoma; font-size: 11px; }
+.sag { width:150px; margin-top:20px; margin-right:30px; float:right; overflow:hidden; }
+
+.footer { width:733px; height:3px; background:url(../img/profil-footer.jpg) no-repeat; position:relative; overflow:hidden; }
+.profil-kapat { margin:10px 0px 10px 0px; text-align:center; }
+.profil-kapat a { color:red; font-weight:bold; text-decoration:none; }
+.profil-kapat a:hover { text-decoration:underline; }
+.temizle { clear:both; }

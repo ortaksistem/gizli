@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xliff version="1.0" xml:lang="en">
+
+  <file datatype="plaintext" original="admin.fla" source-language="EN">
+    <header></header>
+    <body>
+      <trans-unit id="001" resname="IDS_BT SEND PM">
+        <source>Send PM</source>
+      </trans-unit>
+      <trans-unit id="002" resname="IDS_BT VIEW CAMERA">
+        <source>View Camera</source>
+      </trans-unit>
+      <trans-unit id="003" resname="IDS_BT_BANN">
+        <source>Bann</source>
+      </trans-unit>
+      <trans-unit id="004" resname="IDS_BT_BANN_IT">
+        <source>BANN THIS USER</source>
+      </trans-unit>
+      <trans-unit id="005" resname="IDS_BT_CANCEL">
+        <source>CANCEL</source>
+      </trans-unit>
+      <trans-unit id="006" resname="IDS_BT_CREATE_ROOM">
+        <source>CREATE ROOM</source>
+      </trans-unit>
+      <trans-unit id="007" resname="IDS_BT_CREATE_THE_ROM">
+        <source>CREATE IT</source>
+      </trans-unit>
+      <trans-unit id="008" resname="IDS_BT_DELETE_ROOM">
+        <source>DELETE ROOM</source>
+      </trans-unit>
+      <trans-unit id="009" resname="IDS_BT_ENTER CHAT">
+        <source>ENTER CHAT</source>
+      </trans-unit>
+      <trans-unit id="010" resname="IDS_BT_JOIN_ROOM">
+        <source>JOIN ROOM</source>
+      </trans-unit>
+      <trans-unit id="011" resname="IDS_BT_KICK">
+        <source>Kick</source>
+      </trans-unit>
+      <trans-unit id="012" resname="IDS_BT_SEND">
+        <source>SEND</source>
+      </trans-unit>
+      <trans-unit id="013" resname="IDS_GENDER_FEMALE">
+        <source>FEMALE</source>
+      </trans-unit>
+      <trans-unit id="014" resname="IDS_GENDER_HIDDEN">
+        <source>Hidden</source>
+      </trans-unit>
+      <trans-unit id="015" resname="IDS_GENDER_MALE">
+        <source>MALE</source>
+      </trans-unit>
+      <trans-unit id="016" resname="IDS_GENDER_VISIBLE">
+        <source>Visible</source>
+      </trans-unit>
+      <trans-unit id="017" resname="IDS_INT_ADMIN">
+        <source>= Admin</source>
+      </trans-unit>
+      <trans-unit id="018" resname="IDS_INT_CONNECTING">
+        <source>CONNECTING</source>
+      </trans-unit>
+      <trans-unit id="019" resname="IDS_INT_FEMALE">
+        <source>= Female</source>
+      </trans-unit>
+      <trans-unit id="020" resname="IDS_INT_HASCAMERA">
+        <source>= has Camera</source>
+      </trans-unit>
+      <trans-unit id="021" resname="IDS_INT_INITIAL_WELCOME_MSG">
+        <source>Welcome  to the AVChat 1.3 user interface.</source>
+      </trans-unit>
+      <trans-unit id="022" resname="IDS_INT_INITIAL_WELCOME_MSG2">
+        <source>This is The Lobby room , please behave yourself in here. Start your own private room to do anything you want.</source>
+      </trans-unit>
+      <trans-unit id="023" resname="IDS_INT_INTERFACE_PRIV_ROOM_NEED_PASS">
+        <source>This is a private room, you need a password to enter.</source>
+      </trans-unit>
+      <trans-unit id="024" resname="IDS_INT_LOADING_SETTINGS">
+        <source>LOADING SETTINGS</source>
+      </trans-unit>
+      <trans-unit id="025" resname="IDS_INT_MALE">
+        <source>= Male</source>
+      </trans-unit>
+      <trans-unit id="026" resname="IDS_INT_NICK">
+        <source>NICK:</source>
+      </trans-unit>
+      <trans-unit id="027" resname="IDS_INT_PASSWORD">
+        <source>Password:</source>
+      </trans-unit>
+      <trans-unit id="028" resname="IDS_INT_ROOM_DESC">
+        <source>DESCRIPTION(24):</source>
+      </trans-unit>
+      <trans-unit id="029" resname="IDS_INT_ROOM_NAME">
+        <source>NAME(12):*</source>
+      </trans-unit>
+      <trans-unit id="030" resname="IDS_INT_ROOM_PASSWORD">
+        <source>PASSWORD(8):</source>
+      </trans-unit>
+      <trans-unit id="031" resname="IDS_INT_VIDEO_QUALITY">
+        <source>Video Quality:</source>
+      </trans-unit>
+      <trans-unit id="032" resname="IDS_MSG_BANNED">
+        <source>has been banned</source>
+      </trans-unit>
+      <trans-unit id="033" resname="IDS_MSG_CAMERA_USED_BY_ANOTHER_APP">
+        <source>The camera is used by another application</source>
+      </trans-unit>
+      <trans-unit id="034" resname="IDS_MSG_CONNECTION_CLOSED">
+        <source>The connection to the Flash Media Server server was closed</source>
+      </trans-unit>
+      <trans-unit id="035" resname="IDS_MSG_CONNECTION_FAILED">
+        <source>The connection to the Flash Media Server server has failed</source>
+      </trans-unit>
+      <trans-unit id="036" resname="IDS_MSG_FROM">
+        <source>from</source>
+      </trans-unit>
+      <trans-unit id="037" resname="IDS_MSG_INITIAL_GN_MESSAGE">
+        <source>Type your message here</source>
+      </trans-unit>
+      <trans-unit id="038" resname="IDS_MSG_INITIAL_PV_MESSAGE">
+        <source>Select a user first</source>
+      </trans-unit>
+      <trans-unit id="039" resname="IDS_MSG_JOINED_ROOM">
+        <source>has joined the room</source>
+      </trans-unit>
+      <trans-unit id="040" resname="IDS_MSG_KICKED">
+        <source>has been kicked</source>
+      </trans-unit>
+      <trans-unit id="041" resname="IDS_MSG_LEFTCHAT">
+        <source>has left the chat</source>
+      </trans-unit>
+      <trans-unit id="042" resname="IDS_MSG_LEFTROOM">
+        <source>left the room</source>
+      </trans-unit>
+      <trans-unit id="043" resname="IDS_MSG_NO_CAMERA">
+        <source>No camera has been detected</source>
+      </trans-unit>
+      <trans-unit id="044" resname="IDS_MSG_NO_CAMERA_BECAUSE_PERSON_LEFT">
+        <source>The person has left the room</source>
+      </trans-unit>
+      <trans-unit id="045" resname="IDS_MSG_NO_MORE_VIDEO_TIME">
+        <source>Your free video time for today has expired!</source>
+      </trans-unit>
+      <trans-unit id="046" resname="IDS_MSG_RESERVED_NICK">
+        <source>This is a reserved nick. Please select another nick!</source>
+      </trans-unit>
+      <trans-unit id="047" resname="IDS_MSG_SMALL_NICK_P1">
+        <source>Your nick is too small. Please type a nick at least  </source>
+      </trans-unit>
+      <trans-unit id="048" resname="IDS_MSG_SMALL_NICK_P2">
+        <source> characters in length!</source>
+      </trans-unit>
+      <trans-unit id="049" resname="IDS_MSG_TO">
+        <source>to</source>
+      </trans-unit>
+    </body>
+  </file>
+
+</xliff>

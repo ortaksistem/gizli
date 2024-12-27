@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="Assets/Css/reset.css" rel="stylesheet" />
+    <link href="Assets/Css/flexslider.css" rel="stylesheet" />
+    <link href="Assets/Css/font-awesome.min.css" rel="stylesheet" />
+    <link href="Assets/Css/main.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="header-top">
+        <div class="container clearfix">
+            <ul class="social left">
+                <li>
+                    <a href="#">
+                        <img src="Assets/Img/face-icon.png" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="Assets/Img/twit-icon.png" alt="" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="Assets/Img/googleplus-icon.png" alt="" />
+                    </a>
+                </li>
+            </ul>
+            <ul class="top-menu right">
+                <li>
+                    <a href="#">Buzzy</a>
+                </li>
+                <li>
+                    <a href="#">Blog</a>
+                </li>
+                <li>
+                    <a href="#">Sistemler</a>
+                </li>
+                <li class="user-login">
+                    <a href="#">
+                        <img src="Assets/Img/plus-icon.png" />
+                        Üye Ol</a> /
+                    <a href="#">Giriş
+                        <img src="Assets/Img/user-icon.png" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-menu-bg">
+        <div class="container clearfix">
+			<div class="user-login2">
+				<div class="user-login3">
+					<div class="first">
+					<div class="user-login-title"><p>Üye Girişi</p></div>
+					<form action="javascript:void(0)" method="post">
+					<ul>
+						<li><input type="text" name="username" placeholder="E-posta veya kullanıcı adınız" /></li>
+						<li><input type="password" name="password" placeholder="Şifreniz" /></li>
+						<li>
+							<span class="span1"><a href="javascript:void(0)" onclick="goster('third')"><b>Üye Ol</b></a></span>
+							<span class="span2"><a href="javascript:void(0)" onclick="goster('second')">Şifremi Unuttum</a></span>
+						</li>
+						<li><input type="submit" value=" Giriş Yap " class="buttons" /></li>
+						<li class="sonuc"></li>
+					</ul>
+					</form>
+					</div>
+					
+					<div class="second" style="display:none">
+					<div class="user-login-title"><p>Şifremi Gönder</p></div>
+					<form action="javascript:void(0)" method="post">
+					<ul>
+						<li><input type="text" name="username" placeholder="E-posta veya kullanıcı adınız" /></li>
+						<li>
+							<span class="span1"><a href="javascript:void(0)" onclick="goster('third')"><b>Üye Ol</b></a></span>
+							<span class="span2"><a href="javascript:void(0)" onclick="goster('first')">Üye Girişi Yap</a></span>
+						</li>
+						<li><input type="submit" value=" Şifremi Gönder " class="buttons" /></li>
+						<li class="sonuc">İşlem gerçekleştiriliyor</li>
+					</ul>
+					</form>
+					</div>
+					
+					<div class="third" style="display:none">
+					<div class="user-login-title"><p>Üye Ol</p></div>
+					<form action="javascript:void(0)" method="post">
+					<ul>
+						<li><input type="text" name="eposta" placeholder="E-posta adresiniz" /></li>
+						<li><input type="text" name="username" placeholder="Kullanıcı Adınız" /></li>
+						<li><input type="password" name="password" placeholder="Şifreniz" /></li>
+						<li><input type="submit" value=" Üyeliğimi Tamamla " class="buttons" /></li>
+						<li class="sonuc"><img src="Assets/Img/loader1.gif" /></li>
+					</ul>
+					</form>
+					</div>
+				</div>
+			</div>
+            <div class="logo left">
+                <a href="#">
+                    <img src="Assets/Img/logo.png" alt="" /></a>
+            </div>
+            <ul class="menu right">
+                <li>
+                    <a href="#">ANASAYFA</a>
+                </li>
+                <li>
+                    <a href="#" class="active">KURUMSAL</a>
+                </li>
+                <li>
+                    <a href="#">BACKLINK</a>
+                </li>
+                <li>
+                    <a href="#">OPTIMIZASYON</a>
+                </li>
+                <li>
+                    <a href="#">GALERİ</a>
+                </li>
+                <li>
+                    <a href="#">İLETİŞİM</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="slider-bg clearfix">
+        
+        <div class="container">
+            <div class="slider">
+                <ul class="slides">
+                        <li>
+							
+                            <div class="slider-form right">
+							<form action="denetle.php" onSubmit="return denetle()" method="post">
+                                <input type="text" name="domainismi" placeholder="Domain ismini yazınız..." />
+                                <input type="submit" value="ANALİZ ET" class="slider-form-button" />
+							</form>
+                            </div>
+                        </li>
+                    </ul>
+            </div>
+
+        </div>
+    </div>
+    <div class="home-content-top-blue">
+        <div class="container">
+            <div class="content">
+                <h3><span class="yellow">Bizimle Birlikte Neler</span> yapabilirsiniz?</h3>
+                <ul class="home-content-list">
+                    <li>
+                        <div class="image">
+                            <a href="#">
+                                <img src="Assets/Img/site-analizi.png" /></a>
+                        </div>
+                        <p>
+                            Lorem Ipsum boyunca varlığını sürdürmekle kalmaış ve günümüzde elektroniki yazı tipinin gerektiği birçanılmaya başlanmıştır.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <a href="#">
+                                <img src="Assets/Img/backlink-analizi.png" /></a>
+                        </div>
+                        <p>
+                            Lorem Ipsum boyunca varlığını sürdürmekle kalmaış ve günümüzde elektroniki yazı tipinin gerektiği birçanılmaya başlanmıştır.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <a href="#">
+                                <img src="Assets/Img/zararli-backlink-tespiti.png" /></a>
+                        </div>
+                        <p>
+                            Lorem Ipsum boyunca varlığını sürdürmekle kalmaış ve günümüzde elektroniki yazı tipinin gerektiği birçanılmaya başlanmıştır.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <a href="#">
+                                <img src="Assets/Img/google-sira-bulucu.png" /></a>
+                        </div>
+                        <p>
+                            Lorem Ipsum boyunca varlığını sürdürmekle kalmaış ve günümüzde elektroniki yazı tipinin gerektiği birçanılmaya başlanmıştır.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <a href="#">
+                                <img src="Assets/Img/rakiplerim-ne-yapmis.png" /></a>
+                        </div>
+                        <p>
+                            Lorem Ipsum boyunca varlığını sürdürmekle kalmaış ve günümüzde elektroniki yazı tipinin gerektiği birçanılmaya başlanmıştır.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="image">
+                            <a href="#">
+                                <img src="Assets/Img/siralamanizdaki-degismeler.png" /></a>
+                        </div>
+                        <p>
+                            Lorem Ipsum boyunca varlığını sürdürmekle kalmaış ve günümüzde elektroniki yazı tipinin gerektiği birçanılmaya başlanmıştır.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="home-content-top-yellow">
+        <div class="container">
+            <div class="content">
+                <h3>Çözüm Ortaklarımız</h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="cozumortakslider">
+            <ul class="slides">
+                <li>
+                    <img src="Assets/Img/bing-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/meadwestvaco-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/ntv-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/webrazzi-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/skype-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/opet-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/skype-logo.png" alt="" />
+                </li>
+                <li>
+                    <img src="Assets/Img/opet-logo.png" alt="" />
+                </li>
+                <!-- items mirrored twice, total of 12 -->
+            </ul>
+        </div>
+    </div>
+    <div class="footer-top">
+        <div class="container clearfix">
+            <div class="title left"><span class="yellow">Sosyal Medyada</span> Bizi Takip Edin</div>
+            <ul class="social left">
+                <li><a href="#"><i class="fa fa-facebook-square fa-3x"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter-square fa-3x"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus-square fa-3x"></i></a></li>
+                <li><a href="#"><i class="fa fa-wordpress fa-3x"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin-square fa-3x"></i></a></li>
+                <li><a href="#"><i class="fa fa-vine fa-3x"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <ul class="menu">
+                <li>
+                    <h4>Kurumsal</h4>
+                    <ul>
+                        <li><a href="#">Site Explorer & Backlink Checker</a></li>
+                        <li><a href="#">Crawl Report</a></li>
+                        <li><a href="#">Backlinks Report</a></li>
+                    </ul>
+                    <div class="footer-logo">
+                        <a href="#">
+                            <img src="Assets/Img/footer-logo.png" /></a>
+                    </div>
+                </li>
+                <li>
+                    <h4>Webmaster Araçları</h4>
+                    <ul>
+                        <li><a href="#">Site Explorer & Backlink Checker</a></li>
+                        <li><a href="#">Crawl Report</a></li>
+                        <li><a href="#">Backlinks Report</a></li>
+                        <li><a href="#">API Systems</a></li>
+                        <li><a href="#">Domain Comparison</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Yeniliklerden Haberdar Olun</h4>
+                    <div class="bulletin clearfix">
+                        <input type="text" placeholder="e-mail adresiniz.." class="bulletintext" />
+                        <input type="submit" class="sendbulletin right" value="" />
+                    </div>
+                    <ul>
+                        <li><a href="#">Site Explorer & Backlink Checker</a></li>
+                        <li><a href="#">Crawl Report</a></li>
+                        <li><a href="#">Backlinks Report</a></li>
+                        <li><a href="#">API Systems</a></li>
+                        <li><a href="#">Domain Comparison</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container clearfix">
+            <div class="left">Copyright® www.buzzy.com  All Rigts Reserved®</div>
+            <div class="right"><a href="#">Kullanım Haklerı Sözleşmesi</a> | <a href="#">Gizlilik Bildirimi</a></div>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="Assets/Js/jquery.flexslider.js"></script>
+    <script>
+        //$('.slider').flexslider({
+        //    animation: "slide",
+        //    controls: false
+        //});
+        $('.cozumortakslider').flexslider({
+            animation: "slide",
+            animationLoop: false,
+            itemWidth: 165,
+            itemMargin: 6,
+            controlNav: false,
+            controls: true
+        });
+		$(document).ready(function(){
+			$("input[name=domainismi]").on({focus: function(){if($(this).val() == "") $(this).val("http://www.");},blur: function(){if($(this).val() == "http://www.") $(this).val("");}});
+			$(".user-login").click(function(){if($(".user-login2").css("display") == "none") $(".user-login2").css("display", "block");else $(".user-login2").css("display", "none");});
+			
+			$(".first input[type=submit]").click(function(){
+				var k = $(".first input[name=username]").val();
+				var s = $(".first input[name=password]").val();
+				if(k == ""){
+					$(".first .sonuc").html("E-posta veya kullanıcı adını yazınız");
+				}
+				else if(s == ""){
+					$(".first .sonuc").html("Şifrenizi yazınız");
+				}
+				else {
+					$(".first .sonuc").html('<img src="Assets/Img/loader1.gif" />');
+					$(".first input[type=submit]").val('Lütfen Bekleyin...');
+					$(".first input[type=submit]").attr("disabled", true);;
+						jQuery.ajax({
+							type: 'POST',
+							url: 'inc/uye.php?islem=giris',
+							data: "k="+k+"&s="+s,
+							success: function(sonuc){
+								if(sonuc == "ok"){
+									alert("ok");
+								}
+								else {
+									$(".first input[type=submit]").attr("disabled", false);;
+									$(".first input[type=submit]").val('Giriş Yap');
+									$(".first .sonuc").html(sonuc);
+								}
+							}
+						})
+				}
+			});
+		});
+		function denetle(){if($("input[name=domainismi]").val() == "") {alert ("Geçersiz Domain, Lütfen Kontrol Ediniz."); return false;}}
+		function goster(nere){$(".first, .second, .third").hide();$("."+nere).show();}
+    </script>
+</body>
+</html>

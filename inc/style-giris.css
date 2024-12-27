@@ -1,0 +1,27 @@
+body {
+  background:url(../img/mail-giris-bg.jpg) no-repeat #fff;
+  padding:0px; 
+  margin:0px;
+}
+.temizle { clear:both; }
+/* Bunu silicen margin-left:10px; */
+
+#ana { width:901px; height:514px; position:relative; margin:50px 0px 0px 70px; }
+.ana .ust { width:901px; height:64px; background:url(../img/mail-giris-ust.png) no-repeat; }
+.ana .ust .yukleniyor { display:none; position:absolute; top:30px; left:360px; color:#fff; }
+.ana .alt { width:901px; height:4px; background:url(../img/mail-giris-alt.png) no-repeat; }
+.ana .orta { width:901px; height:446px; background:url(../img/mail-giris-orta-bg.png) repeat-y; }
+.ana .orta .icerik { padding:33px 0px 0px 50px; font-size:1em; font-family:"Arial"; color:#c31a2f;}
+.ana .orta .icerik li { width:200px; height:67px; float:left; }
+.ana .orta .icerik .tanitim { width:400; height:134px; float:left; }
+.ana .orta .icerik .webcam { width:400; height:67px; float:left; }
+.ana .orta .icerik .webcam span { color:#000; }
+.ana .orta .icerik input { width:180px; height:27px; border:1px solid #8a8a8a; margin-top:5px; padding:3px; }
+.ana .orta .icerik textarea { width:378px; height:95px; border:1px solid #8a8a8a; margin-top:5px; padding:3px; }
+.ana .orta .icerik select { width:180px; height:27px; border:1px solid #8a8a8a; margin-top:5px; padding:3px; }
+.ana .orta .icerik #d1 { width:56px }
+.ana .orta .icerik #d2{ width:80px }
+.ana .orta .icerik #d3{ width:40px }
+.ana .orta .icerik #webcam { width:15px; height:15px; margin-left:25px; border:none; }
+.ana .orta .icerik .bir { width:200px; height:65px; position:absolute; bottom:40px; right:40px; }
+.ana .orta .icerik .iki { width:180px; height:36px; position:absolute; bottom:52px; right:250px; }

@@ -1,0 +1,11 @@
+/* Tayfun Erbilen Reset CSS */
+body {font: 12px/17px Tahoma; background-color: #000; margin: auto}
+a {text-decoration: none}
+li {list-style-type: none;}
+img, input, textarea {border: none;}
+table, tr, td, ul, li, p, h1, h2, h3, input, textarea {margin: 0px; padding: 0px;}
+.clearfix:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+.clearfix {display: inline-block;}
+html[xmlns] .clearfix {display: block;}
+* html .clearfix {height: 1%;}
+:focus {outline: 0px}
